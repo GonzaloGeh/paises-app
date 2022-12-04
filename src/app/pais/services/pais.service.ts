@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
-import {Country} from "../interfaces/country.interface";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { Country } from "../interfaces/country.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -26,4 +26,8 @@ export class PaisService {
     return this.http.get<Country[]>(url);
   }
 
+  getPaisPorAlpha( id: string): Observable<Country> {
+    const url = `${this.apiUrl}/alpha/${ id }`;
+    return this.http.get<Country>(url);
+  }
 }

@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-
-
 import {Country} from "../../interfaces/country.interface";
 import {PaisService} from "../../services/pais.service";
 
@@ -10,14 +8,16 @@ import {PaisService} from "../../services/pais.service";
   styles: [
   ]
 })
+
 export class PorCapitalComponent {
   termino: string = '';
   hayError: boolean = false;
   paises: Country[] = [];
-  placeholder: string = 'Buscar por capital...';
+  // placeholder: string = 'Buscar por capital...';
 
 
   constructor( private paisService : PaisService ) { }
+
 
   buscar( termino: string ) {
     this.hayError = false;
@@ -25,7 +25,6 @@ export class PorCapitalComponent {
 
     this.paisService.buscarCapital(this.termino) //para que un Observable se ejecute, se debe suscribir
       .subscribe( resp => {
-          console.log(resp);
           this.paises = resp;
         }
         ,(err) =>{
